@@ -20,4 +20,19 @@ router.get("/books", (req, res, next) => {
     .catch(err => next(err));
 });
 
+router.get("/book/:bookId", (req, res, next) => {
+  // res.send(req.params);
+  // get the ID from the address (it's inside of req.params)
+  const { bookId } = req.params;
+  // find the book in the database using the ID form the address
+  Book.findById(bookId)
+    .then(bookDoc => {
+      // send the database query result to the HBS file as "bookItem"
+      res.locals.bookItem = bookDoc;
+      res.render("book-details.hbs");
+    })
+    // next(err) skips to the error handler in "bin/www" (error.hbs)
+    .catch(err => next(err));
+});
+
 module.exports = router;

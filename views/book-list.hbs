@@ -3,16 +3,13 @@
 <ul>
   {{#each bookArray}}
   <li>
-    <h3>{{this.title}}</h3>
+    <h3>{{this.title}}
+
+    </h3>
     <p>by {{this.author}}</p>
 
-
-    <p>
-      Years released:
-      {{#each this.releases}}
-      {{this}}
-      {{/each}}
-    </p>
+    {{!-- embed the ID of the boook into the address of its page --}}
+    <a href="/book/{{this._id}}">Details</a>
 
   </li>
   {{/each}}
