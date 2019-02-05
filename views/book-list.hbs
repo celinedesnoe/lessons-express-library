@@ -1,0 +1,19 @@
+<h2>Our Books</h2>
+
+<ul>
+  {{#each bookArray}}
+  <li>
+    <h3>{{this.title}}</h3>
+    <p>by {{this.author}}</p>
+
+
+    <p>
+      Years released:
+      {{#each this.releases}}
+      {{this}}
+      {{/each}}
+    </p>
+
+  </li>
+  {{/each}}
+</ul>
